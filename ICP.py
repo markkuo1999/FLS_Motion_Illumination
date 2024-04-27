@@ -135,25 +135,23 @@ class CustomOperator(bpy.types.Operator):
     bl_label = "Custom Operator"
 
     def execute(self, context):
-        # Your script here
+        #Specify your object here
         obj = bpy.data.objects.get("Cube")
         obj2 = bpy.data.objects.get("Cube.001")
 
         if obj is not None:
-            # 獲取所有頂點的位置
             vertices = [obj.matrix_world @ v.co for v in obj.data.vertices]
             PC1 = np.array([vertex for vertex in vertices])
             print(PC1[0])
         else:
-            print("物體 'duck' 不存在")
+            print("object does not exist")
             
         if obj2 is not None:
-            # 獲取所有頂點的位置
             vertices = [obj2.matrix_world @ v.co for v in obj2.data.vertices]
             PC2 = np.array([vertex for vertex in vertices])
             print(PC2[0])
         else:
-            print("物體 'duck' 不存在")
+            print("object does not exist")
             
             
         T,_,_ = icp(PC1, PC2)
@@ -166,6 +164,8 @@ class CustomOperator(bpy.types.Operator):
         print("Button clicked. Running script...")
         return {'FINISHED'}
 
+
+#UI
 class CustomPanel(bpy.types.Panel):
     bl_label = "Custom Panel"
     bl_idname = "OBJECT_PT_custom_panel"
