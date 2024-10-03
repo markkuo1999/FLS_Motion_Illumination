@@ -63,7 +63,7 @@ def nearest_neighbor(src, dst):
 
     for point_src in src:
         min_distance = float('inf')
-        print("just for testing")
+        print("just for testinghahaha")
         nearest_index = Nonne
         for i, point_dst in enumerate(dst):
             distance = np.linalg.norm(point_src - point_dst)
